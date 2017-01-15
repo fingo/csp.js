@@ -1,37 +1,45 @@
-# CSP.JS
+# ngCsp.JS
 
-Constraint Satisfaction Problem Solver
+This library is fork of the CSP.JS library, it adds anuglar functionality to already existing library. 
+By using this library you are able to do the csp algorithm in declarative way (see the example).
 
-This is a library for expressing and solving constraint satisfaction problems, in pure JavaScript. Currently it only solves discrete finite-domain problems, and provides a couple of solvers. In the future I hope to support infinite-domain problems and continuous problems as well.
+CSP.js is a library for expressing and solving constraint satisfaction problems, in pure JavaScript. Currently it only solves discrete finite-domain problems, and provides a couple of solvers. In the future I hope to support infinite-domain problems and continuous problems as well.
 
 ## Example
 
-	var p = csp.DiscreteProblem();
-	
-	p.addVariable("a", [1,2,3]);
-	p.addVariable("b", [4,5,6]);
-	p.addVariable("c", [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
-	
-	p.addConstraint(
-		["a", "b"],
-		function(a, b) { return a*2 === b; }
-	);
-
-	p.addConstraint(
-		["b", "c"],
-		function(b, c) { return b*2 === c; }
-	);
-	
-	var one_solution = p.getSolution();
-	var all_solutions = p.getSolutions();
-
+	app.controller("testCtrl", ["$csp", function ($csp) {
+	    // available options with constraints
+	    var configuration = {
+	        options: {
+                'roof': ['chrome', 'white', 'black', 'gold'],
+                'floor': ['white', 'black']
+            },
+            constraints: [
+                {
+                    properties: ['roof', 'floor'],
+                    relations: [
+                        ['chrome', 'black'],
+                        ['chrome', 'white'],
+                        ['gold', 'black'],
+                        ['white', 'white'],
+                        ['white', 'black'],
+                        ['black', 'white'],
+                        ['white', 'white']
+                    ]
+                }
+            ]
+	    };
+	    
+	    // will print all available soltuions - for floow element all options will be used
+	    console.log($csp.getSoltuions(configuration, {roof: 'gold'}, 'floor'));
+	    
+	}
+    
 ## Solvers and Problems we support
 
 Currently we support finite-domain problems, with the following solvers:
 
 - Recursive Backtracking
-- Forward-Checking (in progress)
-- AC3 Arc Consistency (in progress)	
 
 ## Intro to CSPs
 	
@@ -67,7 +75,8 @@ There are tons and tons of problems that can reduce to constraint satisfaction p
 - Sudoku
 - Coloring maps
 - Scheduling blocks of time
+- Collecting parts for car, lamps etc.
 
 ## Credits
 
-This project started as a port of the [python-constraint](http://labix.org/python-constraint) library
+This project started as fork of the [cps.js](https://github.com/njoubert/csp.js/tree/master#cspjs) library
