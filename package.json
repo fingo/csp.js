@@ -4,7 +4,6 @@
   "description": "Angular module for Constraint Satisfaction Problem Solving (CSP): A Constraint solver in JavaScript",
   "main": "index.js",
   "directories": {
-    "example": "examples",
     "test": "test"
   },
   "repository": {

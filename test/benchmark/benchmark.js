@@ -1,5 +1,5 @@
 /**
- * @author
+ * @author Niels Joubert <njoubert@gmail.com>
  * @param benchmarker
  */
 function benchmarkMe(benchmarker) {

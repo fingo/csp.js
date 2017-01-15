@@ -1,3 +1,7 @@
+/**
+ * @author Niels Joubert <njoubert@gmail.com>
+ * @returns {{config: config, measure: measure, measure_chunk: measure_chunk}}
+ */
 function benchmarker() {
 
     //run each test N times and get average
